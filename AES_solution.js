@@ -43,7 +43,7 @@ function update(found, idx) {
 	var C = found ^ decoyPadding;
 	raw[idx] = C;
 	pt[idx] = C ^ ct.charCodeAt(idx - 16);
-	console.log(pt[idx]);
+	//console.log(pt[idx]);
 	console.log(String.fromCharCode(...pt));
 	if (idx > 16){
 		idx--;
