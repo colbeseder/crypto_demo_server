@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<style>
+			#main {
+				padding: 2em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<pre>This server encrypts your secrets using RC4</pre>
+			<form id="f">
+				<input name="alias"><br>
+				<input name="secret"><br>
+				<input type=submit ><br>
+			</form>
+			<br><br>
+			<h2>Secrets</h2>
+			<iframe id="i" src="" style="border:none" width="80%" height="500"></iframe>
+		</div>
+
+		<script>
+		function refresh(){
+			document.getElementById("i").src = "data.html";
+			console.log('refresh');
+		}
+
+		function sendData(evt){
+			evt.preventDefault();
+			// r"alias=([^&]*)&secret=([^&]*)"
+			var data = "alias=" + document.getElementsByName("alias")[0].value + "&secret=" + document.getElementsByName("secret")[0].value
+			
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "/rc4.html");
+			xhr.send(data);
+			setTimeout(refresh, 500);
+		}
+
+		f.onsubmit = sendData;
+		refresh();
+
+		</script>
+		
+		
+		<script>
+			function XOR(a, b){
+				var r =  [];
+				for (var i = 0; i < a.length && i < b.length; i++){
+					r.push(a.charCodeAt(i) ^ b.charCodeAt(i));
+				}
+				return String.fromCharCode(...r);
+			}
+		
+		
+		</script>
+	</body>
+</html>

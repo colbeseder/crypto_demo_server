@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<style>
+			#main {
+				padding: 2em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<pre>This server receives your secrets using AES/CBC</pre>
+			<form id="f">
+				<input name="message" size="100"><br>
+				<input type=submit ><br>
+			</form>
+			<br><br>
+			<h2>Secret</h2>
+			<pre id="ciphertext">D36vDR5/OvX4XO++/ZtA0t5bGZEYWFgvsqxLtY4pC8yWvu0bmeenJYCNLAViDV5Ap3n+3gGvm9HEbnwaZZabT+4iE7vKpIHblyr17Vj8BAI=</pre>
+		</div>
+
+		<script>
+
+		function sendData(evt){
+			evt.preventDefault();
+			// r"alias=([^&]*)&secret=([^&]*)"
+			var data = document.getElementsByName("message")[0].value;
+			
+			ajax(data);
+
+		}
+
+		f.onsubmit = sendData;
+		</script>
+		
+		
+		<script>
+		function XOR(a, b){
+			var r =  [];
+			for (var i = 0; i < a.length && i < b.length; i++){
+				r.push(a.charCodeAt(i) ^ b.charCodeAt(i));
+			}
+			return String.fromCharCode(...r);
+		}
+		
+		function ajax(data, cb, id) {
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "/AES_CBC_message");
+			if (cb) {
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+						cb(id);
+					}
+				}
+			}
+			xhr.send(data);
+		}
+		
+		</script>
+	</body>
+</html>
