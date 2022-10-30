@@ -76,7 +76,7 @@ class Berver(http.server.SimpleHTTPRequestHandler):
 	def do_POST(self):
 		content_length = int(self.headers['Content-Length'])
 		post_data = self.rfile.read(content_length)
-		if self.path[1:] == "rc4.html":
+		if self.path[1:] == "rc4_endpoint.html":
 			string_data = post_data.decode("utf-8") 
 			pat = r"alias=([^&]*)&secret=([^&]*)"
 			m = re.search(pat, string_data)

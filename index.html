@@ -7,6 +7,8 @@
 		</style>
 	</head>
 	<body>
+		<span style="float:right">Go to <a href="/padding_oracle.html">AES CBC challenge</a></span><br>
+		<hr>
 		<div id="main">
 			<pre>This server encrypts your secrets using RC4</pre>
 			<form id="f">
@@ -31,7 +33,7 @@
 			var data = "alias=" + document.getElementsByName("alias")[0].value + "&secret=" + document.getElementsByName("secret")[0].value
 			
 			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "/rc4.html");
+			xhr.open("POST", "/rc4_endpoint.html");
 			xhr.send(data);
 			setTimeout(refresh, 500);
 		}
