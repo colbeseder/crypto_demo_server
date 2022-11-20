@@ -31,6 +31,11 @@ else:
 def add_data(x):
 	with open(DATA_FILE, "a") as myfile:
 		myfile.write(x)
+try:
+    os.remove(DATA_FILE)
+except:
+    pass
+add_data("Secret: 0J3/koz8ZH+sOoulenw0iA==<br>")
 
 def rc4_encrypt(d):
 	cipher = ARC4.new(KEY)
