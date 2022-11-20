@@ -75,7 +75,7 @@ function findNextChar(idx){
 						return;
 					}
 					else if (found === real){
-						console.log("found === real");
+						//console.log("found === real");
 						t = setTimeout(function(){
 							update(found, idx);
 						}, 2E3);
