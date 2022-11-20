@@ -6,7 +6,7 @@ AES is an encryption system that accepts a 16 byte key, and a 16 byte plaintext 
 
 In AES _ECB mode_, each block of 16 bytes is encrypted separately, using the same key. One disadvantage with this is that identical plain blocks result in identical cipher blocks. As an improvement on this, we have Cipher Block Chaining (CBC) mode. Each block is XOR'ed with the ciphertext of the previous block before it is encrypted. The first block (has no previous block), is XOR'ed with a random Initialisation Vector (IV).
 
-![AES CBC Mode](images/aes cbc mode.jpg?raw=true "AES CBC Mode")
+![AES CBC Mode](images/aes_cbc_mode.jpg?raw=true "AES CBC Mode")
 
 _But what if the data doesn't fit neatly into a multiple of 16 bytes?_
 
@@ -35,7 +35,7 @@ We will start breaking the secret from the end, and work towards the start.
 
 We know that we can affect the last byte of the ciphertext by changing the last byte of the previous block. Of course, this will completely garble the previous block, but at this stage we're only interested in the last block.
 
-![CBC Break](images/cbc break step by step.jpg?raw=true "CBC Break - Step by Step")
+![CBC Break](images/cbc_break_step_by_step.jpg?raw=true "CBC Break - Step by Step")
 
 We want to find _P_. And we know that
 
