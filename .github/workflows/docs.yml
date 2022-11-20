@@ -1,7 +1,10 @@
-
-- name: Converts Markdown to HTML
-  uses: jaywcjlove/markdown-to-html-cli@main
-  with:
-    source: README.md
-    output: coverage/action.html
-    github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
+name: Convert Markdown to HTML
+run-name: Convert Markdown to HTML
+on: [push]
+jobs:
+  Docs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm i markdown-to-html-cli -g 
+      - run: markdown-to-html --source src/README.md --output coverage/index.html
+      - run: echo "🍏 This job's status is ${{ job.status }}."
