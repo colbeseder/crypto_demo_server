@@ -8,9 +8,6 @@ ajax(
     btoa(String.fromCharCode(...ctArray)))
 	
 
-
-
-
 var idx = ct.length - 17;
 
 ajax(
